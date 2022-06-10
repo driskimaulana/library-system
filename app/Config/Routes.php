@@ -43,6 +43,12 @@ $routes->get('/biblio/detail/(:num)', 'Biblio::detail/$1');
 $routes->get('/koleksi/tambah/(:num)', 'Koleksi::tambah/$1');
 $routes->post('/koleksi/save', 'Koleksi::save');
 $routes->get('/koleksi/index', 'Koleksi::index');
+$routes->get('/peminjaman/pinjam/(:num)', 'Peminjaman::pinjam/$1');
+$routes->get('/member/index', 'Member::index');
+$routes->get('/member/tambah', 'Member::tambah');
+$routes->post('/member/save', 'Member::save');
+$routes->post('/member/index', 'Member::index');
+$routes->get('/member/detail/(:num)', 'Member::detail/$1');
 
 /*
  * --------------------------------------------------------------------

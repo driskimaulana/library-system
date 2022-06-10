@@ -8,7 +8,8 @@
         <div class="col">
             <div class="row">
                 <div class="col-md-6">
-                    <h3>Daftar Biblio</h3>
+                    <a href="/member/tambah/" class="btn btn-primary mb-3">Tambah Data Member</a>
+                    <h3>Daftar Member</h3>
 
                 </div>
                 <div class="col-md-6">
@@ -17,6 +18,7 @@
                             <input type="text" class="form-control" placeholder="Masukkan keyword" name="keyword">
                             <button class="btn btn-outline-secondary" class="btn btn-primary" type=submit" id="submit" name="submit">Cari</button>
                         </div>
+
                     </form>
                 </div>
 
@@ -26,10 +28,13 @@
             <thead>
                 <tr>
                 <th scope="col">No</th>
-                <th scope="col">Judul</th>
-                <th scope="col">Nomor Registrasi</th>
-                <th scope="col">Lokasi Koleksi</th>
-                <th scope="col">Status</th>
+                <th scope="col">Nomor Membership</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Tanggal Lahir</th>
+                <th scope="col">Email</th>
+                <th scope="col">Telepon</th>
+                <th scope="col">Alamat</th>
+                <th scope="col">Status Membership</th>
                 <th scope="col">Aksi</th>
                 </tr>
             </thead>
@@ -37,28 +42,28 @@
                 <?php
                 
                 $i = 0;
-                $j = 0;
-                foreach ($koleksis as $k) {
+                foreach ($members as $m) {
                     ?>
 
                     <tr>
                         <th scope="row"><?= ++$i + 10 * ($currentPage - 1) ?></th>
-                        <td><a href="/biblio/detail/<?= $k['buku_id'] ?>"><?= $judul[$j]?></a></td>
-                        <td><?= $k['nomor_registrasi'] ?></td>
-                        <td><?= $k['lokasi'] ?></td>
-                        <td><?= $k['status'] ?></td>
-                        
-                        <td><a href="/peminjaman/pinjam/<?= $k['koleksi_id'] ?>" class="btn btn-success">Pinjam</a></td>
+                        <td><?= $m['nomor_membership'] ?></td>
+                        <td><?= $m['nama'] ?></td>
+                        <td><?= $m['tanggal_lahir'] ?></td>
+                        <td><?= $m['email'] ?></td>
+                        <td><?= $m['telepon'] ?></td>
+                        <td><?= $m['alamat'] ?></td>
+                        <td><?= $m['status_membership'] ?></td>
+                        <td><a href="/member/detail/<?= $m['member_id'] ?>" class="btn btn-success">Detail</a></td>
                     </tr>
 
                     <?php
-                    $j++;
                 }
 
                 ?>
             </tbody>
             </table>
-            <?= $pager->links('biblio_koleksi', 'my_pagination') ?>
+            <?= $pager->links('biblio', 'my_pagination') ?>
         </div>
     </div>
 <!-- </div> -->

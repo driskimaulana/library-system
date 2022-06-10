@@ -14,7 +14,7 @@
 		
 		<div class="wrapper d-flex align-items-stretch">
 			<nav id="sidebar" class="active">
-				<h1><a href="index.html" class="logo">M.</a></h1>
+				<h1><a href="index.html" class="logo">D'</a></h1>
         <ul class="list-unstyled components mb-5">
           <li class="active">
             <a href="#"><span class="fa fa-home"></span> Home</a>
@@ -30,6 +30,10 @@
           </li>
           <li>
             <a href="#"><span class="fa fa-paper-plane"></span> Contacts</a>
+          </li>
+          <li>
+            <!-- <i class=""></i> -->
+            <a href="/logout"><span class="fa fa-sign-out"></span> Logout</a>
           </li>
         </ul>
 
@@ -65,6 +69,9 @@
                 <li class="nav-item <?= $tab == 'Koleksi' ? 'active' : '' ?>">
                     <a class="nav-link" href="/koleksi/index">Koleksi Biblio</a>
                 </li>
+                <li class="nav-item <?= $tab == 'Member' ? 'active' : '' ?>">
+                    <a class="nav-link" href="/member/index">Member</a>
+                </li>
                 <li class="nav-item <?= $tab == 'Peminjaman' ? 'active' : '' ?>">
                     <a class="nav-link" href="/loans/index">Riwayat Peminjaman</a>
                 </li>
@@ -84,6 +91,25 @@
         
       </div>
 		</div>
+
+    <script>
+
+      function previewImage()
+      {
+        const sampul = document.querySelector("#img");
+        const image = document.querySelector(".img-preview");
+
+        const filesampul = new FileReader();
+        filesampul.readAsDataURL(sampul.files[0]);
+
+        filesampul.onload = function(e){
+          image.src = e.target.result;
+        }
+
+      }
+
+        
+    </script>
 
     <!-- <script src="js/jquery.min.js"></script> -->
     <script src="<?= base_url('js/jquery.min.js'); ?>"></script>
