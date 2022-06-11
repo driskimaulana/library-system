@@ -63,7 +63,7 @@
                 ?>
             </tbody>
             </table>
-            <?= $pager->links('biblio', 'my_pagination') ?>
+            <?= $pager->links('member', 'my_pagination') ?>
         </div>
     </div>
 <!-- </div> -->

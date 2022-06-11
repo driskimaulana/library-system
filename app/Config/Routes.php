@@ -37,7 +37,9 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/biblio/index', 'Biblio::index');
+$routes->get('/biblio/form', 'Biblio::form');
 $routes->post('/biblio/index', 'Biblio::index');
+$routes->post('/biblio/save', 'Biblio::save');
 $routes->post('/koleksi/index', 'Koleksi::index');
 $routes->get('/biblio/detail/(:num)', 'Biblio::detail/$1');
 $routes->get('/koleksi/tambah/(:num)', 'Koleksi::tambah/$1');
@@ -49,6 +51,15 @@ $routes->get('/member/tambah', 'Member::tambah');
 $routes->post('/member/save', 'Member::save');
 $routes->post('/member/index', 'Member::index');
 $routes->get('/member/detail/(:num)', 'Member::detail/$1');
+$routes->get('/member/banned/(:num)', 'Member::banned/$1');
+$routes->get('/member/activate/(:num)', 'Member::activate/$1');
+$routes->get('/peminjaman/index/', 'Peminjaman::index');
+$routes->post('/peminjaman/index/', 'Peminjaman::index');
+$routes->post('/peminjaman/verifikasi/', 'Peminjaman::verifikasi');
+$routes->post('/peminjaman/save', 'Peminjaman::save');
+$routes->get('/pengembalian/index', 'Pengembalian::index');
+$routes->get('/pengembalian/form_pengembalian/(:num)', 'Pengembalian::form_pengembalian/$1');
+$routes->post('/pengembalian/save', 'Pengembalian::save');
 
 /*
  * --------------------------------------------------------------------

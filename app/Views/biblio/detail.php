@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <img src="/images/<?= $biblios['img'] ?>" alt="">
+            <img src="/images/books/<?= $biblios['img'] ?>" alt="">
             <a href="/koleksi/tambah/<?= $biblios['buku_id'] ?>" class="btn btn-primary my-3">Tambah Koleksi</a>
         </div>
         <div class="col-md-9">

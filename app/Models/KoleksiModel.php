@@ -29,7 +29,13 @@ class KoleksiModel extends Model
         return $this->table('biblio_koleksi')->like('nomor_registrasi', $keyword);
     }
 
-    public function getKoleksi($id = false){
+    public function getKoleksi($id = false, $noreg = false){
+        
+        if($noreg != false)
+        {
+            return $this->where(['nomor_registrasi' => $noreg])->first();
+        }
+        
         if($id == false){
             return $this->findAll();
         }

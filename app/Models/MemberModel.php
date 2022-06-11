@@ -28,8 +28,16 @@ class MemberModel extends Model
     public function search($keyword){
         return $this->table('member')->like('nama', $keyword)->orLike('nomor_membership', $keyword);
     }
+    
+   
 
-    public function getMember($id = false){
+    public function getMember($id = false, $nomor_membership = false){
+
+        if($nomor_membership != false)
+        {
+            return $this->where(['nomor_membership' => $nomor_membership])->first();
+        }
+
         if($id == false){
             return $this->findAll();
         }

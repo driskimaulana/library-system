@@ -24,9 +24,14 @@ class PeminjamanModel extends Model
     protected $validationMessages = [];
     protected $skipValidation     = false;
 
-    protected $allowedFields = ['peminjaman_id', 'buku_id', 'member_id', 'koleksi_id', 'admin_id', 'tanggal_pinjam', 'batas_kembali', 'status'];
+    protected $allowedFields = ['peminjaman_id', 'buku_id', 'member_id', 'koleksi_id', 'admin_id', 'tanggal_pinjam', 'batas_kembali', 'status', 'nomor_peminjaman'];
     public function search($keyword){
-        return $this->table('peminjaman')->like('peminjaman_id', $keyword);
+        return $this->table('peminjaman')->like('peminjaman_id', $keyword)->orLike('member_id', $keyword)->orLike('buku_id', $keyword)->orLike('koleksi_id', $keyword)->orLike('nomor_peminjaman', $keyword);
+    }
+
+    public function getAllPeminjaman($id)
+    {
+        return $this->where(['member_id' => $id]);
     }
 
     public function getPeminjaman($id = false){

@@ -3,14 +3,27 @@
 namespace App\Controllers;
 
 use App\Models\MemberModel;
+use App\Models\BiblioModel;
+use App\Models\KoleksiModel;
+use App\Models\PeminjamanModel;
 
 class Member extends BaseController
 {
     protected $memberModel;
+    protected $biblioModel;
+    protected $koleksiModel;
+    protected $peminjamanModel;
+    protected $admin;
 
     public function __construct()
     {
         $this->memberModel = new MemberModel();
+        $this->biblioModel = new BiblioModel();
+        $this->koleksiModel = new KoleksiModel();
+        $this->peminjamanModel = new PeminjamanModel();
+        $auth = service('authentication');
+        $this->admin = $auth->user();    
+    
     }
 
     public function index()
@@ -122,11 +135,65 @@ class Member extends BaseController
         return redirect()->to('/member/index');
     }
 
+    public function banned($id)
+    {
+        $this->memberModel->save([
+            'member_id' => $id,
+            'status_membership' => 'Nonaktif'
+        ]);
+
+        return redirect()->to('/member/detail/' . $id);
+    }
+    public function activate($id)
+    {
+        $this->memberModel->save([
+            'member_id' => $id,
+            'status_membership' => 'Aktif'
+        ]);
+
+        return redirect()->to('/member/detail/' .  $id);
+    }
+
     public function detail($id)
     {
+
+        $currentPage = $this->request->getVar('page_peminjaman') ? $this->request->getVar('page_peminjaman') : 1;
+
+        $member = $this->memberModel->getMember($id, false);
+        
+        $peminjaman = $this->peminjamanModel->getAllPeminjaman($id);
+
+        $peminjamans = $peminjaman->paginate(10, 'peminjaman');
+
+        $p_judul = array();
+        $i = 0;
+        foreach ($peminjamans as $k) {
+            $p_judul[$i] = $this->biblioModel->getBiblio($k['buku_id'])['title'];
+            $i++;
+        }
+        $p_member = array();
+        $i = 0;
+        foreach ($peminjamans as $k) {
+            $p_member[$i] = $this->memberModel->getMember($k['member_id'])['nomor_membership'];
+            $i++;
+        }
+        $p_koleksi = array();
+        $i = 0;
+        foreach ($peminjamans as $k) {
+            $p_koleksi[$i] = $this->koleksiModel->getKoleksi($k['koleksi_id'])['nomor_registrasi'];
+            $i++;
+        }
+
         $data = [
             'title' => $this->memberModel->getMember($id)['nama'],
             'members' => $this->memberModel->getMember($id),
+            'peminjamans' => $peminjamans,
+            'p_judul' => $p_judul,
+            'p_member' => $p_member,
+            'p_koleksi' => $p_koleksi,
+            'admin' => $this->admin,
+            'currentPage' => $currentPage,
+            'pager' => $peminjaman->pager,
             'tab' => 'Member'
         ];
 

@@ -12,7 +12,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
 
-                    <form action="/koleksi/save" method="POST" enctype="multipart/form-data" >
+                    <form action="/peminjaman/verifikasi" method="POST" enctype="multipart/form-data" >
                         <?= csrf_field() ?>
                         <div class="my-3">
                             <label for="nomorregistrasi" class="form-label" style="font-size: 20px; color: black;">Nomor Registrasi</label>
@@ -28,7 +28,7 @@
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('nomormember') ?>
                                 </div>
-                            <div id="nomormember" class="form-text">(Contoh : 202210060001)</div>
+                            <div id="nomormember" class="form-text">(Contoh : 1307021106220001)</div>
                         </div>
                         
                         <button type="submit" class="btn btn-primary mt-2">Tambah</button>

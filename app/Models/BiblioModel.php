@@ -24,7 +24,7 @@ class BiblioModel extends Model
     protected $validationMessages = [];
     protected $skipValidation     = false;
 
-    // protected $allowedFields = ['judul', 'slug', 'penulis', 'penerbit', 'sampul', 'created_at', 'updated_at'];
+    protected $allowedFields = ['buku_id', 'title', 'authors', 'average_rating', 'isbn', 'isbn13', 'language_code', 'num_pages', 'ratings_count', 'publication_date', 'publisher', 'img'];
     public function search($keyword){
         return $this->table('biblio')->like('title', $keyword)->orLike('authors', $keyword)->orLike('publisher', $keyword);
     }

@@ -73,13 +73,10 @@
                     <a class="nav-link" href="/member/index">Member</a>
                 </li>
                 <li class="nav-item <?= $tab == 'Peminjaman' ? 'active' : '' ?>">
-                    <a class="nav-link" href="/loans/index">Riwayat Peminjaman</a>
+                    <a class="nav-link" href="/peminjaman/index">Riwayat Peminjaman</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Portfolio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                <li class="nav-item <?= $tab == 'Pengembalian' ? 'active' : '' ?>">
+                    <a class="nav-link" href="/pengembalian/index">Pengembalian</a>
                 </li>
               </ul>
             </div>

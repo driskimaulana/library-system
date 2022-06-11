@@ -8,15 +8,16 @@
         <div class="col">
             <div class="row">
                 <div class="col-md-6">
-                    <h3>Daftar Biblio</h3>
+                    <h3>Riwayat Peminjaman</h3>
 
                 </div>
                 <div class="col-md-6">
                     <form action="" method="post">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Masukkan keyword" name="keyword">
+                            <input type="text" class="form-control" placeholder="Masukkan nomor peminjaman" name="keyword">
                             <button class="btn btn-outline-secondary" class="btn btn-primary" type=submit" id="submit" name="submit">Cari</button>
                         </div>
+
                     </form>
                 </div>
 
@@ -26,9 +27,13 @@
             <thead>
                 <tr>
                 <th scope="col">No</th>
+                <th scope="col">Nomor Peminjaman</th>
                 <th scope="col">Judul</th>
-                <th scope="col">Nomor Registrasi</th>
-                <th scope="col">Lokasi Koleksi</th>
+                <th scope="col">Nomor Membership</th>
+                <th scope="col">Noreg Koleksi</th>
+                <th scope="col">Admin</th>
+                <th scope="col">Tanggal Pinjam</th>
+                <th scope="col">Batas Kembali</th>
                 <th scope="col">Status</th>
                 <th scope="col">Aksi</th>
                 </tr>
@@ -38,17 +43,20 @@
                 
                 $i = 0;
                 $j = 0;
-                foreach ($koleksis as $k) {
+                foreach ($peminjamans as $b) {
                     ?>
 
                     <tr>
                         <th scope="row"><?= ++$i + 10 * ($currentPage - 1) ?></th>
-                        <td><a href="/biblio/detail/<?= $k['buku_id'] ?>"><?= $judul[$j]?></a></td>
-                        <td><?= $k['nomor_registrasi'] ?></td>
-                        <td><?= $k['lokasi'] ?></td>
-                        <td><?= $k['status'] ?></td>
-                        
-                        <td><?= $k['status'] == 'Tersedia' ? "<a href='/peminjaman/pinjam/" . $k['koleksi_id'] .  "' class='btn btn-success'>Pinjam</a>"  : '' ?> </td>
+                        <td><?= $b['nomor_peminjaman'] ?></td>
+                        <td><a href="/biblio/detail/<?= $b['buku_id'] ?>"><?= $judul[$j]?></td>
+                        <td><?= $members[$j] ?></td>
+                        <td><?= $koleksis[$j] ?></td>
+                        <td><?= $admin ?></td>
+                        <td><?= $b['tanggal_pinjam'] ?></td>
+                        <td><?= $b['batas_kembali'] ?></td>
+                        <td><?= $b['status'] ?></td>
+                        <td> <?= $b['status'] == 'Dalam Peminjaman' ? "<a href='/pengembalian/form_pengembalian/" . $b['peminjaman_id'] . "' class='btn btn-success'>Pengembalian</a>" : '' ?> </td>
                     </tr>
 
                     <?php
@@ -58,7 +66,7 @@
                 ?>
             </tbody>
             </table>
-            <?= $pager->links('biblio_koleksi', 'my_pagination') ?>
+            <?= $pager->links('peminjaman', 'my_pagination') ?>
         </div>
     </div>
 <!-- </div> -->
