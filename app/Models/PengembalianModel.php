@@ -26,7 +26,7 @@ class PengembalianModel extends Model
 
     protected $allowedFields = ['pengembalian_id', 'buku_id', 'peminjaman_id', 'admin_id', 'kondisi_buku', 'denda', 'created_at', 'tanggal_kembali', 'catatan', 'nomor_peminjaman'];
     public function search($keyword){
-        return $this->table('pengembalian')->like('peminjaman_id', $keyword)->orLike('member_id', $keyword)->orLike('buku_id', $keyword)->orLike('koleksi_id', $keyword)->orLike('nomor_peminjaman', $keyword);
+        return $this->table('pengembalian')->like('peminjaman_id', $keyword)->orLike('buku_id', $keyword)->orLike('nomor_peminjaman', $keyword);
     }
 
     public function getPengembalian($id = false){

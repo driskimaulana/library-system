@@ -58,6 +58,7 @@ $routes->post('/peminjaman/index/', 'Peminjaman::index');
 $routes->post('/peminjaman/verifikasi/', 'Peminjaman::verifikasi');
 $routes->post('/peminjaman/save', 'Peminjaman::save');
 $routes->get('/pengembalian/index', 'Pengembalian::index');
+$routes->post('/pengembalian/index', 'Pengembalian::index');
 $routes->get('/pengembalian/form_pengembalian/(:num)', 'Pengembalian::form_pengembalian/$1');
 $routes->post('/pengembalian/save', 'Pengembalian::save');
 
