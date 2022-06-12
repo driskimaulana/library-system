@@ -5,10 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-		
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?= base_url('css/style.css') ?>" >
+    <?= $this->include('/layout/link.php') ?>
+    
   </head>
   <body>
 		
@@ -19,13 +17,10 @@
           <li class="active">
             <a href="/"><span class="fa fa-home"></span> Home</a>
           </li>
-          <li>
-              <a href="#"><span class="fa fa-user"></span> About</a>
-          </li>
           
           <li>
             <!-- <i class=""></i> -->
-            <a href="/logout"><span class="fa fa-sign-out"></span> Logout</a>
+            <a href="/logout"><span class="ion ion-log-out"></span> Logout</a>
           </li>
         </ul>
 
@@ -108,5 +103,7 @@
     <script src="<?= base_url('js/bootstrap.min.js') ?>"></script>
     <!-- <script src="js/main.js"></script> -->
     <script src="<?= base_url('js/main.js') ?>"></script>
+
+    
   </body>
 </html>
